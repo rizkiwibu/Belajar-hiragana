@@ -21,7 +21,9 @@
 
 		const answers = shuffle([
 			answer,
-			...shuffle(hiragana2romanValues.filter((v) => v != answer)).slice(0, 3)
+			...shuffle(
+				hiragana2romanValues.filter((v) => v != answer && v.length === answer.length)
+			).slice(0, 3)
 		]).map((v) => ({ value: v, wrong: false }) as Answer);
 
 		return {
