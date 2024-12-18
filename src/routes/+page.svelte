@@ -14,6 +14,9 @@
 
 	let sessionAnswers = $state(getRandomSessionAnswers());
 	let sessionIndex = $state(0);
+	let sessionProgress = $derived.by(() => {
+		return (sessionIndex / sessionAnswers.length) * 100;
+	});
 
 	const getRandomHiraganaAnswers = () => {
 		const character = sessionAnswers[sessionIndex];
@@ -38,10 +41,9 @@
 	const setAnswer = (answer: string, index: number) => {
 		if (answer === hiragana.answer) {
 			sessionIndex += 1;
-			if (sessionIndex >= hiragana2romanKeys.length) {
+			if (sessionIndex >= sessionAnswers.length) {
 				sessionAnswers = getRandomSessionAnswers();
 				sessionIndex = 0;
-				console.log('SESSION RESET');
 			}
 			hiragana = getRandomHiraganaAnswers();
 		} else {
@@ -55,7 +57,13 @@
 </svelte:head>
 
 <div class="column flex min-h-dvh flex-col">
-	<div class="font-jp flex flex-1 items-center justify-center text-[12rem]">
+	<div class="flex items-center justify-center p-2">
+		<div class="h-1 max-w-80 grow rounded bg-slate-700">
+			<div class="h-1 rounded bg-slate-200" style="width: {sessionProgress}%;"></div>
+		</div>
+	</div>
+
+	<div class="flex flex-1 items-center justify-center font-jp text-[10rem] md:text-[12rem]">
 		{hiragana.character}
 	</div>
 
