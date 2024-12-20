@@ -1,169 +1,214 @@
-export const hiragana2roman: Map<string, string> = new Map([
-	//
-	['あ', 'a'],
-	['い', 'i'],
-	['う', 'u'],
-	['え', 'e'],
-	['お', 'o'],
+export type Column = {
+	base: [string, string][];
+	dakuten: [string, string][];
+	handakuten: [string, string][];
+	yoon: [string, string][];
+	dakutenYoon: [string, string][];
+	handakutenYoon: [string, string][];
+};
 
-	// K
-	['か', 'ka'],
-	['き', 'ki'],
-	['く', 'ku'],
-	['け', 'ke'],
-	['こ', 'ko'],
+export const column: Column = {
+	base: [
+		//
+		['あ', 'a'],
+		['い', 'i'],
+		['う', 'u'],
+		['え', 'e'],
+		['お', 'o'],
 
-	// K + yōon
-	['きゃ', 'kya'],
-	['きゅ', 'kyu'],
-	['きょ', 'kyo'],
+		// K
+		['か', 'ka'],
+		['き', 'ki'],
+		['く', 'ku'],
+		['け', 'ke'],
+		['こ', 'ko'],
 
-	// K + dakuten
-	['が', 'ga'],
-	['ぎ', 'gi'],
-	['ぐ', 'gu'],
-	['げ', 'ge'],
-	['ご', 'go'],
+		// S
+		['さ', 'sa'],
+		['し', 'shi'],
+		['す', 'su'],
+		['せ', 'se'],
+		['そ', 'so'],
 
-	// K + dakuten + yōon
-	['ぎゃ', 'gya'],
-	['ぎゅ', 'gyu'],
-	['ぎょ', 'gyo'],
+		// T
+		['た', 'ta'],
+		['ち', 'chi'],
+		['つ', 'tsu'],
+		['て', 'te'],
+		['と', 'to'],
 
-	// S
-	['さ', 'sa'],
-	['し', 'shi'],
-	['す', 'su'],
-	['せ', 'se'],
-	['そ', 'so'],
+		// N
+		['な', 'na'],
+		['に', 'ni'],
+		['ぬ', 'nu'],
+		['ね', 'ne'],
+		['の', 'no'],
 
-	// S + yōon
-	['しゃ', 'sha'],
-	['しゅ', 'shu'],
-	['しょ', 'sho'],
+		// H
+		['は', 'ha'],
+		['ひ', 'hi'],
+		['ふ', 'fu'],
+		['へ', 'he'],
+		['ほ', 'ho'],
 
-	// S + dakuten
-	['ざ', 'za'],
-	['じ', 'ji'],
-	['ず', 'zu'],
-	['ぜ', 'ze'],
-	['ぞ', 'zo'],
+		// M
+		['ま', 'ma'],
+		['み', 'mi'],
+		['む', 'mu'],
+		['め', 'me'],
+		['も', 'mo'],
 
-	// S + dakuten + yōon
-	['じゃ', 'ja'],
-	['じゅ', 'ju'],
-	['じょ', 'jo'],
+		// Y
+		['や', 'ya'],
+		['ゆ', 'yu'],
+		['よ', 'yo'],
 
-	// T
-	['た', 'ta'],
-	['ち', 'chi'],
-	['つ', 'tsu'],
-	['て', 'te'],
-	['と', 'to'],
+		// R
+		['ら', 'ra'],
+		['り', 'ri'],
+		['る', 'ru'],
+		['れ', 're'],
+		['ろ', 'ro'],
 
-	// T + yōon
-	['ちゃ', 'cha'],
-	['ちゅ', 'chu'],
-	['ちょ', 'cho'],
+		// W
+		['わ', 'wa'],
+		['ゐ', 'wi'],
+		['ゑ', 'we'],
+		['を', 'wo'],
 
-	// T + dakuten
-	['だ', 'da'],
-	['ぢ', 'ji'],
-	['づ', 'zu'],
-	['で', 'de'],
-	['ど', 'do'],
+		// N
+		['ん', 'n']
+	],
+	dakuten: [
+		// K + dakuten
+		['が', 'ga'],
+		['ぎ', 'gi'],
+		['ぐ', 'gu'],
+		['げ', 'ge'],
+		['ご', 'go'],
 
-	// T + dakuten + yōon
-	['ぢゃ', 'dya'],
-	['ぢゅ', 'dyu'],
-	['ぢょ', 'dyo'],
+		// S + dakuten
+		['ざ', 'za'],
+		['じ', 'ji'],
+		['ず', 'zu'],
+		['ぜ', 'ze'],
+		['ぞ', 'zo'],
 
-	// N
-	['な', 'na'],
-	['に', 'ni'],
-	['ぬ', 'nu'],
-	['ね', 'ne'],
-	['の', 'no'],
+		// T + dakuten
+		['だ', 'da'],
+		['ぢ', 'ji'],
+		['づ', 'zu'],
+		['で', 'de'],
+		['ど', 'do'],
 
-	// N + yōon
-	['にゃ', 'nya'],
-	['にゅ', 'nyu'],
-	['にょ', 'nyo'],
+		// H + dakuten
+		['ば', 'ba'],
+		['び', 'bi'],
+		['ぶ', 'bu'],
+		['べ', 'be'],
+		['ぼ', 'bo']
+	],
+	handakuten: [
+		// H + handakuten
+		['ぱ', 'pa'],
+		['ぴ', 'pi'],
+		['ぷ', 'pu'],
+		['ぺ', 'pe'],
+		['ぽ', 'po']
+	],
+	yoon: [
+		// K + yōon
+		['きゃ', 'kya'],
+		['きゅ', 'kyu'],
+		['きょ', 'kyo'],
 
-	// H
-	['は', 'ha'],
-	['ひ', 'hi'],
-	['ふ', 'fu'],
-	['へ', 'he'],
-	['ほ', 'ho'],
+		// S + yōon
+		['しゃ', 'sha'],
+		['しゅ', 'shu'],
+		['しょ', 'sho'],
 
-	// H + yōon
-	['ひゃ', 'hya'],
-	['ひゅ', 'hyu'],
-	['ひょ', 'hyo'],
+		// T + yōon
+		['ちゃ', 'cha'],
+		['ちゅ', 'chu'],
+		['ちょ', 'cho'],
 
-	// H + dakuten
-	['ば', 'ba'],
-	['び', 'bi'],
-	['ぶ', 'bu'],
-	['べ', 'be'],
-	['ぼ', 'bo'],
+		// N + yōon
+		['にゃ', 'nya'],
+		['にゅ', 'nyu'],
+		['にょ', 'nyo'],
 
-	// H + dakuten + yōon
-	['びゃ', 'bya'],
-	['びゅ', 'byu'],
-	['びょ', 'byo'],
+		// H + yōon
+		['ひゃ', 'hya'],
+		['ひゅ', 'hyu'],
+		['ひょ', 'hyo'],
 
-	// H + handakuten
-	['ぱ', 'pa'],
-	['ぴ', 'pi'],
-	['ぷ', 'pu'],
-	['ぺ', 'pe'],
-	['ぽ', 'po'],
+		// M + yōon
+		['みゃ', 'mya'],
+		['みゅ', 'myu'],
+		['みょ', 'myo'],
 
-	// H + handakuten + yōon
-	['ぴゃ', 'pya'],
-	['ぴゅ', 'pyu'],
-	['ぴょ', 'pyo'],
+		// R + yōon
+		['りゃ', 'rya'],
+		['りゅ', 'ryu'],
+		['りょ', 'ryo']
+	],
+	dakutenYoon: [
+		// K + dakuten + yōon
+		['ぎゃ', 'gya'],
+		['ぎゅ', 'gyu'],
+		['ぎょ', 'gyo'],
 
-	// M
-	['ま', 'ma'],
-	['み', 'mi'],
-	['む', 'mu'],
-	['め', 'me'],
-	['も', 'mo'],
+		// S + dakuten + yōon
+		['じゃ', 'ja'],
+		['じゅ', 'ju'],
+		['じょ', 'jo'],
 
-	// M + yōon
-	['みゃ', 'mya'],
-	['みゅ', 'myu'],
-	['みょ', 'myo'],
+		// T + dakuten + yōon
+		['ぢゃ', 'dya'],
+		['ぢゅ', 'dyu'],
+		['ぢょ', 'dyo'],
 
-	// Y
-	['や', 'ya'],
-	['ゆ', 'yu'],
-	['よ', 'yo'],
+		// H + dakuten + yōon
+		['びゃ', 'bya'],
+		['びゅ', 'byu'],
+		['びょ', 'byo']
+	],
+	handakutenYoon: [
+		// H + handakuten + yōon
+		['ぴゃ', 'pya'],
+		['ぴゅ', 'pyu'],
+		['ぴょ', 'pyo']
+	]
+};
 
-	// R
-	['ら', 'ra'],
-	['り', 'ri'],
-	['る', 'ru'],
-	['れ', 're'],
-	['ろ', 'ro'],
+export const filterColumn = (daku: boolean, handa: boolean, yoon: boolean) => {
+	let characters = [...column.base];
 
-	// R + yōon
-	['りゃ', 'rya'],
-	['りゅ', 'ryu'],
-	['りょ', 'ryo'],
+	if (daku) {
+		characters = characters.concat(column.dakuten);
+	}
 
-	// W
-	['わ', 'wa'],
-	['ゐ', 'wi'],
-	['ゑ', 'we'],
-	['を', 'wo'],
+	if (handa) {
+		characters = characters.concat(column.handakuten);
+	}
 
-	// N
-	['ん', 'n']
-]);
+	if (yoon) {
+		characters = characters.concat(column.yoon);
+	}
 
-export const hiragana2romanKeys: string[] = Array.from(hiragana2roman.keys());
-export const hiragana2romanValues: string[] = Array.from(hiragana2roman.values());
+	if (daku && yoon) {
+		characters = characters.concat(column.dakutenYoon);
+	}
+
+	if (handa && yoon) {
+		characters = characters.concat(column.handakutenYoon);
+	}
+
+	const hiragana2roman = new Map(characters);
+
+	return {
+		hiragana2roman,
+		keys: Array.from(hiragana2roman.keys()),
+		values: Array.from(hiragana2roman.values())
+	};
+};
