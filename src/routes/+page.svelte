@@ -4,9 +4,9 @@
 	import Start from '../components/Start.svelte';
 
 	let sessionPage = $state(false);
-	let daku = $state(browser ? window.localStorage.getItem('daku') === 'true' : false);
-	let handa = $state(browser ? window.localStorage.getItem('handa') === 'true' : false);
-	let yoon = $state(browser ? window.localStorage.getItem('yoon') === 'true' : false);
+	let daku = $state(browser ? window.localStorage.getItem('daku') === 'true' : true);
+	let handa = $state(browser ? window.localStorage.getItem('handa') === 'true' : true);
+	let yoon = $state(browser ? window.localStorage.getItem('yoon') === 'true' : true);
 
 	$effect(() => {
 		window.localStorage.setItem('daku', `${daku}`);
