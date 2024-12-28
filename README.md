@@ -5,7 +5,7 @@ Quiz to test my memory on hiragana.
 ## TODO
 
 - [x] Add filter for `◌` dakuten, `◌` handakuten, and **yōon**.
-- [ ] Add input text as answer.
+- [x] Add input text as answer.
 
 ## Built With
 
