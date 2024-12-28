@@ -1,23 +1,28 @@
 <script lang="ts">
 	import { Button } from '@/components/ui/button';
 	import { Checkbox } from '@/components/ui/checkbox';
+	import { Input } from '@/components/ui/input';
 	import { Label } from '@/components/ui/label';
+	import * as RadioGroup from '@/components/ui/radio-group/index';
 
 	let {
 		sessionPage = $bindable(),
 		daku = $bindable(),
 		handa = $bindable(),
-		yoon = $bindable()
+		yoon = $bindable(),
+		answerMode = $bindable()
 	}: {
 		sessionPage: boolean;
 		daku: boolean;
 		handa: boolean;
 		yoon: boolean;
+		answerMode: 'BUTTONS' | 'TEXT_INPUT';
 	} = $props();
 </script>
 
 <div class="column flex min-h-dvh flex-col">
 	<div class="mx-auto mt-auto flex flex w-full max-w-2xl flex-1 flex-col justify-center gap-2 p-4">
+		<h3 class="scroll-m-20 text-xl font-semibold uppercase tracking-tight">Variation</h3>
 		<div class="flex items-center space-x-2">
 			<Checkbox id="dakuten" bind:checked={daku} aria-labelledby="dakuten-label" />
 			<Label
@@ -104,6 +109,37 @@
 				</a>
 			</Label>
 		</div>
+		<h3 class="mt-2 scroll-m-20 text-xl font-semibold uppercase tracking-tight">Answer Mode</h3>
+		<RadioGroup.Root bind:value={answerMode} class="grid grid-cols-2">
+			<div class="flex flex-col gap-4">
+				<div class="flex items-center space-x-2">
+					<RadioGroup.Item value="BUTTONS" id="r1" />
+					<Label for="r1">Buttons</Label>
+				</div>
+				<div class="flex aspect-[1/1] flex-col justify-end rounded border-4 p-2 sm:aspect-[2/1]">
+					<div class="flex flex-row gap-2">
+						<Button class="grow px-0"></Button>
+						<Button class="grow px-0"></Button>
+						<Button class="grow px-0" disabled variant="destructive"></Button>
+						<Button class="grow px-0"></Button>
+					</div>
+				</div>
+			</div>
+			<div class="flex flex-col gap-4">
+				<div class="flex items-center space-x-2">
+					<RadioGroup.Item value="TEXT_INPUT" id="r2" />
+					<Label for="r2">Text Input</Label>
+				</div>
+				<div class="flex aspect-[1/1] flex-col justify-end rounded border-4 p-2 sm:aspect-[2/1]">
+					<div class="flex flex-row gap-2">
+						<div class="flex w-full max-w-sm items-center space-x-2">
+							<Input type="answer" placeholder="Answer" />
+							<Button>submit</Button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</RadioGroup.Root>
 	</div>
 
 	<div class="mx-auto mt-auto flex w-full max-w-2xl flex-row justify-stretch gap-4 p-4 md:gap-4">

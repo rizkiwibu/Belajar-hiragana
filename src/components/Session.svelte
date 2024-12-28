@@ -1,19 +1,23 @@
 <script lang="ts">
 	import { Button } from '@/components/ui/button';
+	import { Input } from '@/components/ui/input';
 	import { filterColumn } from '@/mapping';
 	import { shuffle } from '@/shuffle';
 	import { toggleMode } from 'mode-watcher';
+	import { toast } from 'svelte-sonner';
 
 	let {
 		sessionPage = $bindable(),
 		daku,
 		handa,
-		yoon
+		yoon,
+		answerMode
 	}: {
 		sessionPage: boolean;
 		daku: boolean;
 		handa: boolean;
 		yoon: boolean;
+		answerMode: 'BUTTONS' | 'TEXT_INPUT';
 	} = $props();
 
 	type Answer = {
@@ -68,6 +72,22 @@
 		} else {
 			hiragana.answers[index].wrong = true;
 		}
+	};
+
+	let submitAnswerValue = $state('');
+
+	const submitAnswer = (answer: string) => {
+		if (answer === hiragana.answer) {
+			sessionIndex += 1;
+			if (sessionIndex >= sessionAnswers.length) {
+				sessionAnswers = getRandomSessionAnswers();
+				sessionIndex = 0;
+			}
+			hiragana = getRandomHiraganaAnswers();
+		} else {
+			toast.error(`${answer} is not the answer`);
+		}
+		submitAnswerValue = '';
 	};
 </script>
 
@@ -125,19 +145,39 @@
 		{hiragana.character}
 	</div>
 
-	<div class="mx-auto flex w-full max-w-2xl flex-row justify-stretch gap-4 p-4 md:gap-4">
-		{#each hiragana.answers as answer, i}
+	{#if answerMode === 'BUTTONS'}
+		<div class="mx-auto flex w-full max-w-2xl flex-row justify-stretch gap-4 p-4 md:gap-4">
+			{#each hiragana.answers as answer, i}
+				<Button
+					onclick={() => {
+						setAnswer(answer.value, i);
+					}}
+					variant={answer.wrong ? 'destructive' : 'default'}
+					disabled={answer.wrong}
+					size="lg"
+					class="grow px-0 text-2xl md:text-3xl"
+				>
+					{answer.value}
+				</Button>
+			{/each}
+		</div>
+	{/if}
+
+	{#if answerMode === 'TEXT_INPUT'}
+		<form
+			onsubmit={(event) => {
+				event.preventDefault();
+				submitAnswer(submitAnswerValue.toLowerCase());
+			}}
+			class="mx-auto flex w-full max-w-2xl flex-row items-center justify-stretch gap-4 p-4 md:gap-4"
+		>
+			<Input type="answer" placeholder="Answer" bind:value={submitAnswerValue} />
 			<Button
-				onclick={() => {
-					setAnswer(answer.value, i);
-				}}
-				variant={answer.wrong ? 'destructive' : 'default'}
-				disabled={answer.wrong}
+				type="submit"
 				size="lg"
-				class="grow px-0 text-2xl md:text-3xl"
+				class="text-2xl md:text-3xl"
+				disabled={submitAnswerValue === ''}>submit</Button
 			>
-				{answer.value}
-			</Button>
-		{/each}
-	</div>
+		</form>
+	{/if}
 </div>
