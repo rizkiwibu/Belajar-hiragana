@@ -26,6 +26,24 @@
 				class="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 			>
 				Dakuten
+				<a href="//en.wikipedia.org/wiki/Dakuten_and_handakuten" target="_blank" aria-label="Help">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="18"
+						height="18"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="inline"
+					>
+						<circle cx="12" cy="12" r="10" />
+						<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+						<path d="M12 17h.01" />
+					</svg>
+				</a>
 			</Label>
 		</div>
 
@@ -37,6 +55,24 @@
 				class="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 			>
 				Handakuten
+				<a href="//en.wikipedia.org/wiki/Dakuten_and_handakuten" target="_blank" aria-label="Help">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="18"
+						height="18"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="inline"
+					>
+						<circle cx="12" cy="12" r="10" />
+						<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+						<path d="M12 17h.01" />
+					</svg>
+				</a>
 			</Label>
 		</div>
 
@@ -48,6 +84,24 @@
 				class="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 			>
 				Yōon
+				<a href="//en.wikipedia.org/wiki/Y%C5%8Don" target="_blank" aria-label="Help">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="18"
+						height="18"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="inline"
+					>
+						<circle cx="12" cy="12" r="10" />
+						<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+						<path d="M12 17h.01" />
+					</svg>
+				</a>
 			</Label>
 		</div>
 	</div>
